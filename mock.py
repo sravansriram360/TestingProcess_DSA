@@ -1,5 +1,6 @@
 import os
 import shutil 
+import subprocess
 
 def copy_to_multiple_destinations(source_folder, destination_folders):
     try:
@@ -50,8 +51,10 @@ def run_python_file_in_folders(file_name, destination_folders):
                 current_directory = os.getcwd()
                 os.chdir(destination_folder)
                 
-                os.system("echo $PWD")
-                os.system(f"python3 {file_name}")
+                print('Running results for: ', destination_folder)
+                # Run the command and wait for it to finish
+                output = subprocess.check_output(f"python3 {file_name}", shell=True, text=True)
+                print(output)
                 
                 print('----------------------')
                 print('\n')
@@ -64,9 +67,3 @@ def run_python_file_in_folders(file_name, destination_folders):
         print(f"An error occurred: {e}")
 
 run_python_file_in_folders('test.py', destination_folders)
-
-
-
-
-
-
