@@ -10,7 +10,7 @@ def extract_cpp_files(src_folder):
             print(f"Deleted: {macosx_folder}")
     for root, dirs, files in os.walk(src_folder):
         for file_name in files:
-            if file_name.lower().endswith('.cpp') and 'main' in file_name:
+            if file_name.lower().endswith('.cpp'):
                 file_path = os.path.join(root, file_name)
                 if file_path != src_folder + '/' + file_name:
                     shutil.copy2(file_path, src_folder)
