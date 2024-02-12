@@ -10,7 +10,7 @@ def extract_cpp_files(src_folder):
             print(f"Deleted: {macosx_folder}")
     for root, dirs, files in os.walk(src_folder):
         for file_name in files:
-            if file_name.lower().endswith('.cpp'):
+            if file_name.lower().endswith('.cpp') or file_name.lower().endswith('.h'):
                 file_path = os.path.join(root, file_name)
                 if file_path != src_folder + '/' + file_name:
                     shutil.copy2(file_path, src_folder)
@@ -31,8 +31,8 @@ def unzip_all_files(parent_folder, extract_folder):
     
 
 # Replace 'your_directory_path' with the path to your folder containing zip folders
-directory_path = 'submissions_PA0'
-dest_path = 'submissions_PA0/extract'
+directory_path = 'submissions_LE1'
+dest_path = 'submissions_LE1/extract'
 unzip_all_files(directory_path, dest_path)
 
 all_items = os.listdir(dest_path)
